@@ -1,0 +1,47 @@
+<head>
+    <title>Get Job</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">View Jobs</li>
+  </ol>
+</nav>
+ 
+<div class="container" style="padding-top: 15vh;"> 
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <h1 style="text-align: center;">View Job</h1>
+      <table class="table">
+        <thead class="thead-light" style="text-align: center;">
+          <tr>
+            <th>Job Name</th>
+            <th>Part Id</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <%jobs.forEach(function(job){ %>
+            <tr>
+              <td><%= job.jobName %></td>
+              <td><%= job.partID %></td>
+              <td><%= job.qty %></td>
+              <td>
+                  <a href="/Jobs/edit/<%= job.jobName %>/<%= job.partID %>" class="btn btn-primary"> Edit</a>
+                  <form class="d-inline" action="/Jobs/delete/<%= job.jobName %>" method="POST">
+                  <input type="submit" value="Delete Job" class="btn btn-danger">
+                  </form>
+              </td>
+            </tr> 
+          <%}) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="text-center">
+<a href="/add" class="btn btn-primary btn-lg" >Add Jobs</a>
+</div>
